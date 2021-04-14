@@ -20,7 +20,6 @@ const CardRecipe = (props) => {
 
         return (
             <div>
-                {console.log(recipe)}
                 {recipe.length === 0 ? '':
                     <Card style={{ width: '35rem' }}>
                     <Card.Img variant="top" src={recipe[0]['strMealThumb']}/>

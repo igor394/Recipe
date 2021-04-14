@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Table } from 'react-bootstrap';
 import {sidbarReq} from '../utils/request';
+import Context from "../context/context";
 
 
 export default function SideBar(props) {
-
+    const {contx} = useContext(Context)
     const [list, setList] = useState([]);
 
     const fetchCategory =  async ()=>{
@@ -14,6 +15,8 @@ export default function SideBar(props) {
     useEffect(()=>{
         fetchCategory()
     }, [])
+
+    if(contx!==null && contx!==undefined && contx.length>0 ) return null;
 
     return (
         <div style={{ minWidth: '250px'}}>
