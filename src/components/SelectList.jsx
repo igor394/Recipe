@@ -22,12 +22,16 @@ const SelectList = (props) => {
         setItemRecep([]);
         setRecipe(e.target.id);
     }
+    const backList =(e)=>{
+        fetchSelect(e.target.id);
+        console.log(e.target.id);
+    }
 
 
     return (
         <div className="d-flex align-content-start flex-wrap container item-wrap">
             {itemRecep && itemRecep.map((item, index) => <div onClick={cardView} className="ietm-list " id={item['strMeal']} key={index} >{item['strMeal']}</div>)}
-             <CardRecipe recept={recipe}/>
+             <CardRecipe recept={recipe} back={backList}/>
         </div>
     );
 };
