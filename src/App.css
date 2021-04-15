@@ -1,16 +1,13 @@
-
-.main{
+.main {
     background-color: dimgray;
     min-height: 100vh;
 }
-.ietm-list{
+
+.ietm-list {
     border: 1px solid darkcyan;
     width: 160px;
     height: 100px;
     padding: 5px;
     text-align: center;
     margin: 5px;
-}
-.item-wrap{
-
 }
