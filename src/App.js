@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import SideBar from './components/SideBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./components/Header";
 import './App.css';
+import SelectList from "./components/SelectList";
+import Context from './context/context';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [categor, setCategor] = useState('');
+
+    const selectCategory = (e) => {
+        setCategor(e.target.id)
+    }
+
+    const [contx, setContx] = useState([]);
+    const clearItems = () => {
+        if (contx.length > 0) {
+            return false
+        }
+        return true;
+    };
+    const value = {contx, setContx, clearItems};
+
+
+    return (
+        <Context.Provider value={value}>
+            <div className="main">
+                <Header/>
+                <div className="container d-flex">
+                    <SideBar select={selectCategory}/>
+                    <SelectList category={categor}/>
+                </div>
+            </div>
+        </Context.Provider>
+
+
+    );
 }
 
 export default App;
+
+
+
+
+
