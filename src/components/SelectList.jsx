@@ -11,11 +11,11 @@ const SelectList = (props) => {
     const [recipe, setRecipe] = useState(null)
 
     const fetchSelect = async (param) => {
-        const res = await selectReq(param)
         try{
+            const res = await selectReq(param)
             setItemRecep(res);
             setRecipe(null);
-        }catch (e){
+        } catch(e){
             alert(e.message);
         }
     }

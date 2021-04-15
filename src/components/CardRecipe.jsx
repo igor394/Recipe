@@ -7,10 +7,10 @@ const CardRecipe = (props) => {
     const [recipe, setRecipe] = useState([])
 
     const fetchCard = async (param) => {
-        const res = await cardReq(param)
         try{
+            const res = await cardReq(param);
             setRecipe(res);
-        }catch (e){
+        } catch(e){
             alert(e.message);
         }
     }

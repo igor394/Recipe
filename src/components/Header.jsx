@@ -13,11 +13,11 @@ const Header = () => {
     }
 
     const fetchSearch = async (params) => {
-        const res = await serchReq(params)
         try{
+            const res = await serchReq(params)
             if(res)setContx(res);
             else return undefined;
-        }catch (e){
+        } catch(e){
             alert(e.message);
         }
     }

@@ -9,10 +9,10 @@ export default function SideBar(props) {
     const [list, setList] = useState([]);
 
     const fetchCategory = async () => {
-        const res = await sidbarReq()
         try{
+            const res = await sidbarReq()
             setList(res);
-        }catch (e){
+        } catch(e){
             alert(e.message);
         }
     }

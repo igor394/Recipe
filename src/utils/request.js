@@ -1,34 +1,28 @@
 import axios from 'axios';
 const BASE_URL = 'https://themealdb.com/api/json/v1/1';
-const  METHOD = 'get';
-const instance = axios.create ({baseURL: BASE_URL, method: METHOD});
-
-const CATEGORY = '/categories.php';
-const FILTER_RECIPE = '/search.php?s=';
-const FILTER_CATEGORY = '/filter.php?c=';
-const SEARCH = '/search.php?f=';
+const instance = axios.create ({baseURL: BASE_URL});
 
 export const sidbarReq = () => {
-    return instance(CATEGORY)
+    return instance.get('/categories.php')
         .then(response => response.data.categories)
         .catch(error => console.log(error))
 
 }
 
 export const selectReq = (params) => {
-    return instance(FILTER_CATEGORY + params)
+    return instance.get('/filter.php?c=' + params)
         .then(response => response.data.meals)
         .catch(error => console.log(error))
 }
 
 export const cardReq = (params) => {
-    return instance(FILTER_RECIPE + params)
+    return instance.get('/search.php?s=' + params)
         .then(response => response.data.meals)
         .catch(error => console.log(error))
 }
 
 export const serchReq = (params) => {
-    return instance(SEARCH + params)
+    return instance.get('/search.php?f=' + params)
         .then(response => response.data.meals)
         .catch(error => console.log(error))
 }
