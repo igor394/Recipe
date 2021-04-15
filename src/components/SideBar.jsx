@@ -10,8 +10,13 @@ export default function SideBar(props) {
 
     const fetchCategory = async () => {
         const res = await sidbarReq()
-        setList(res);
+        try{
+            setList(res);
+        }catch (e){
+            alert(e.message);
+        }
     }
+
     useEffect(() => {
         fetchCategory()
     }, [])

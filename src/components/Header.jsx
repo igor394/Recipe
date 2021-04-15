@@ -5,15 +5,21 @@ import {serchReq} from "../utils/request";
 
 const Header = () => {
     const {setContx} = useContext(Context);
+
     const test = (e) => {
         e.preventDefault();
         let searchParams = e.target.elements[0].value;
         fetchSearch(searchParams)
     }
+
     const fetchSearch = async (params) => {
         const res = await serchReq(params)
-        if(res)setContx(res);
-        else return undefined;
+        try{
+            if(res)setContx(res);
+            else return undefined;
+        }catch (e){
+            alert(e.message);
+        }
     }
 
     return (

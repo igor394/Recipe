@@ -12,9 +12,14 @@ const SelectList = (props) => {
 
     const fetchSelect = async (param) => {
         const res = await selectReq(param)
-        setItemRecep(res);
-        setRecipe(null);
+        try{
+            setItemRecep(res);
+            setRecipe(null);
+        }catch (e){
+            alert(e.message);
+        }
     }
+
     useEffect(() => {
         fetchSelect(props.category);
     }, [props.category])
@@ -24,6 +29,7 @@ const SelectList = (props) => {
         setContx([])
         setRecipe(e.target.id);
     },[setContx])
+
     const backList = useCallback((e) => {
         fetchSelect(e.target.id);
     },[])

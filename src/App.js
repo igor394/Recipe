@@ -19,7 +19,8 @@ function App() {
     const clearItems = () => {
         if (contx.length > 0) {
             return false
-        } else return true;
+        }
+        return true;
     };
     const value = {contx, setContx, clearItems};
 

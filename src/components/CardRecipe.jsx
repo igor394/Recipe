@@ -8,8 +8,13 @@ const CardRecipe = (props) => {
 
     const fetchCard = async (param) => {
         const res = await cardReq(param)
-        setRecipe(res);
+        try{
+            setRecipe(res);
+        }catch (e){
+            alert(e.message);
+        }
     }
+
     useEffect(() => {
         if (props.recept) {
             fetchCard(props.recept)
@@ -20,7 +25,7 @@ const CardRecipe = (props) => {
 
     return (
         <div>
-            {recipe.length === 0 ? '' :
+            {recipe.length > 0 &&
                 <Card style={{width: '30rem', margin: '10px'}}>
                     <Card.Img variant="top" src={recipe[0]['strMealThumb']}/>
                     <Card.Body>
